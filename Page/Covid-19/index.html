@@ -9,22 +9,33 @@
 
     <script defer src="../node_modules/jquery/dist/jquery.js" type="module"></script>
     <script defer src="../node_modules/vue/dist/vue.js"></script>
-    <script defer src="./Js/app.js" type="module"></script>
+    <script defer src="./Js/input.js" type="module"></script>
 </head>
 <body>
-    <div id="app">
+    <div id="world_vue">
+        <h2>World statistics</h2>
+        <ul>
+            <li>TotalConfirmed: {{Total.Confirmed}}</li>
+            <li>TotalRecovered: {{Total.Recovered}}</li>
+            <li>TotalActive: {{Total.Active}}</li>
+            <li>TotalDeaths: {{Total.Deaths}}</li>
+        </ul>
+    </div>
+
+    <div id="input_vue">
         <div id="error_alert" @click="CloseAlert" style="display: none;">Warning</div>
         <span>Enter your country: </span>
-        <input list="countries" type="text" type="search" v-model="country"/>
+        <input list="countries_list" type="text" type="search" v-model="country"/>
         <button type="button" @click="Search">Search</button>
-        <datalist id="countries">
+        <input type="range" name="vol" min="0" max="50" />
+        <datalist id="countries_list">
             <option v-for="item in countries">{{item}}</option>
         </datalist>
     </div>
 
-    <div id="second">
+    <div id="country_vue">
         <h2>Country name: {{name}}</h2>
-        <h3>Cases</h3>
+        <h3>Cases: </h3>
         <ul style="list-style: none;">
             <li v-for="item in cases">{{item}} cases</li>
         </ul>
