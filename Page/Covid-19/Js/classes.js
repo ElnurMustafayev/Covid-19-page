@@ -17,13 +17,14 @@ export class Dates {
 }
 
 export class Infected {
-    constructor(result) {
-        this.Confirmed = result.TotalConfirmed;
-        this.Deaths = result.TotalDeaths;
-        this.Recovered = result.TotalRecovered;
+    constructor(query_result) {
+        this.Date = Date.now();
+        this.Confirmed = query_result.TotalConfirmed;
+        this.Deaths = query_result.TotalDeaths;
+        this.Recovered = query_result.TotalRecovered;
         this.Active = this.GetActive();
     }
-
+    
     GetActive() {
         return this.Confirmed - this.Deaths - this.Recovered;
     }

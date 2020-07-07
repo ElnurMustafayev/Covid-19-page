@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
 
     <script defer src="../node_modules/jquery/dist/jquery.js" type="module"></script>
     <script defer src="../node_modules/vue/dist/vue.js"></script>
     <script defer src="./Js/input.js" type="module"></script>
-</head>
-<body>
+
+  </head>
+  <body>
+
     <div id="world_vue">
-        <h2>World statistics</h2>
-        <ul>
-            <li>TotalConfirmed: {{Total.Confirmed}}</li>
-            <li>TotalRecovered: {{Total.Recovered}}</li>
-            <li>TotalActive: {{Total.Active}}</li>
-            <li>TotalDeaths: {{Total.Deaths}}</li>
-        </ul>
+      <h2>World statistics</h2>
+      <ul>
+        <li>TotalConfirmed: {{Total.Confirmed}}</li>
+        <li>TotalRecovered: {{Total.Recovered}}</li>
+        <li>TotalActive: {{Total.Active}}</li>
+        <li>TotalDeaths: {{Total.Deaths}}</li>
+      </ul>
     </div>
 
     <div id="input_vue">
-        <div id="error_alert" @click="CloseAlert" style="display: none;">Warning</div>
+      <form v-on:submit.prevent="Search">
+        <p id="error_alert" @click="CloseAlert" style="display: none;"></p>
         <span>Enter your country: </span>
-        <input list="countries_list" type="text" type="search" v-model="country"/>
-        <button type="button" @click="Search">Search</button>
-        <input type="range" name="vol" min="0" max="50" />
+        <input list="countries_list" type="text" type="search" v-model="country" />
+        <button>Search</button>
+        <input type="range" min="1" v-bind:max="maxDaysCount" v-model="daysCount" />
+        <span>{{daysCount == maxDaysCount ? "All" : daysCount}} Days</span>
         <datalist id="countries_list">
-            <option v-for="item in countries">{{item}}</option>
+          <option v-for="item in countries">{{item}}</option>
         </datalist>
+      </form>
     </div>
 
-    <div id="country_vue">
-        <h2>Country name: {{name}}</h2>
-        <h3>Cases: </h3>
-        <ul style="list-style: none;">
-            <li v-for="item in cases">{{item}} cases</li>
-        </ul>
+    <div id="country_vue" v-show="name">
+      <h2>Country name: {{name}}</h2>
+      <h3>Info:</h3>
+      <ul style="list-style: none;">
+        <li v-for="item in cases">{{GetCaseFullInfo(item)}}</li>
+      </ul>
     </div>
-</body>
+
+  </body>
 </html>

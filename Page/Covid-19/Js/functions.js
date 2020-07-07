@@ -3,14 +3,14 @@ const api_country_total = "https://api.covid19api.com/total/country/";
 const api_total = "https://api.covid19api.com/world/total";
 
 export function GetParamsFromClassArray(array, ...arrayParams) {
-  let countries = [];
+  let newObj = [];
   array.map((item) => {
     let newItem = {};
     for (let key of arrayParams)
       newItem[key] = item[key];
-    countries.push(newItem);
+      newObj.push(newItem);
   });
-  return countries;
+  return newObj;
 }
 
 export function GetOneParamFromArray(array, arrayParam) {
@@ -41,17 +41,6 @@ export async function GetTotal() {
   }
 }
 
-export async function GetCountryTotalInDiapason(apistr) {
-  try {
-    let request = await fetch(apistr);
-    let data = await request.json();
-    return data;
-  }
-  catch(error) {
-    console.error("Country's info not found!");
-  }
-}
-
 export async function GetCountryTotal(countryName) {
   try {
     let request = await fetch(`${api_country_total}${countryName}`);
@@ -61,11 +50,4 @@ export async function GetCountryTotal(countryName) {
   catch(error) {
     console.error("Country's total info not found!");
   }
-}
-
-export function GetApiStrCountryInDiapason(Country, dates) {
-    let api = "https://api.covid19api.com/total/country/" + Country +
-    "/status/confirmed?from=" + dates.dateOld + "&to=" + dates.dateNow;
-    
-    return api;
 }

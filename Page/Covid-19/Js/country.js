@@ -1,5 +1,4 @@
 import * as functions from "./functions.js";
-import * as classes from "./classes.js";
 
 export let country_vue = new Vue({
   el: "#country_vue",
@@ -8,35 +7,33 @@ export let country_vue = new Vue({
   data: {
     name: "",
     cases: [],
+    daysCount: 10,
   },
 
   // commands
-  methods: {},
-
-  // new property with accessors
-  computed: {
-    country_name: {
-      get: function () {
-        return this.name;
-      },
-      set: function (value) {
-        console.log(value);
-        this.name = value;
-      },
-    },
+  methods: {
+    GetCaseFullInfo(caseItem) {
+      return caseItem.Date.toLocaleDateString() + ": " + caseItem.Confirmed + " | " + 
+      caseItem.Deaths + " | " + + caseItem.Recovered + " | " + 
+      caseItem.Active;
+    }
   },
 
   // when prop is changed (like setter)
   watch: {
     name: async function name(newname, oldname) {
-      let days = classes.Dates.GetOldAndNowDays(10);
-      let apistr = functions.GetApiStrCountryInDiapason(newname, days);
-      let resultArr = await functions.GetCountryTotalInDiapason(apistr);
-      this.cases = functions.GetOneParamFromArray(resultArr, "Cases");
-      //let result = await functions.GetCountryTotal(newname);
-      //console.log(result.length);
-      //result = result.slice(result.length - 10 - 1, 10);
-      //console.log(result);
+      let result = await functions.GetCountryTotal(newname);
+
+      let filteredResult = result.splice(result.length - this.daysCount);
+      this.cases = functions.GetParamsFromClassArray(
+        filteredResult,
+        "Date",
+        "Confirmed",
+        "Deaths",
+        "Recovered",
+        "Active"
+      );
+      this.cases.map(item => item.Date = new Date(item.Date.substr(0, 10)));
     },
   },
 });

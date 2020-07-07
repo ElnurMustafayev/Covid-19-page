@@ -8,11 +8,14 @@ let input_vue = new Vue({
   data: {
     country: "",
     countries: null,
+    daysCount: 10,
+    maxDaysCount: 167,
   },
 
   methods: {
     Search: function () {
       if (this.countries.find((item) => item === this.country)){
+        country_m.country_vue.daysCount = this.daysCount;
         country_m.country_vue.name = this.country;
         $(`#error_alert`).slideUp(500);
       }
