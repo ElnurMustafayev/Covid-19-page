@@ -1,0 +1,40 @@
+body {
+  font-size: 20px;
+}
+
+body #world_vue .center {
+  display: block;
+  text-align: center;
+}
+
+body #world_vue .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body #world_vue .container ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 400;
+  padding: 10px 50px;
+}
+
+body #world_vue .container ul li * {
+  margin-left: 10px;
+}
+
+body #world_vue .container ul li.header {
+  font-size: 24px;
+  margin: auto;
+}
+/*# sourceMappingURL=Styles.css.map */

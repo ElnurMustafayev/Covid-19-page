@@ -1,0 +1,41 @@
+@import './Global.scss';
+
+body {
+    font-size: $Default_Font-size;
+
+    // WORLD
+    #world_vue {
+
+        .center {
+            display: block;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            ul {
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: 400;
+                    padding: 10px 50px;
+
+                    * {
+                        margin-left: 10px;
+                    }
+                }
+
+                li.header {
+                    font-size: $Default_Font-size + 4;
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+    
+}
