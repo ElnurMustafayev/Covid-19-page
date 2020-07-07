@@ -53,28 +53,51 @@ body {
 
         // RATING
         #rating_vue {
-            margin: 100px 0px;
+            margin: 100px 100px;
             
             .conteiner {
                 max-height: 800px;
                 overflow: auto;
 
+                // table
                 table {
                     margin: auto;
                     text-align: left;
                     position: relative;
                     border-collapse: collapse;
 
-                    th {
-                        background-color: white;
-                        top: 0;
-                        position: sticky;
+                    // head
+                    thead {
+
+                        th {
+                            text-align: center;
+                            background-color: white;
+                            top: 0;
+                            position: sticky;
+                            transition: 0.3s;
+                        }
+
+                        th.Total, th.New {
+
+                            &:hover {
+                                cursor: pointer;
+                                background-color: #f3f3f3;
+                            }
+                        }
+                        
+                        th.selected {
+                            background-color: #f3f3f3;
+                        }
                     }
 
-                    td.with-image {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
+                    // body
+                    tbody {
+
+                        td.with-image {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
                     }
                 }
 

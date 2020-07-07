@@ -6,10 +6,24 @@ export let rating_vue = new Vue({
     data: {
         countriesInfo: [],
         countriesFlags: [],
+        bydescending: true,
         headWords: ["Confirmed", "Deaths", "Recovered"],
     },
 
-    methods: {},
+    methods: {
+        SortTable: function() {
+            let $target = $(event.target);
+            let sortProperty = $target[0].className + $target.text();
+            
+            if(this.bydescending)
+                this.countriesInfo.sort((item1, item2) => item2[sortProperty] - item1[sortProperty]);
+            else
+                this.countriesInfo.sort((item1, item2) => item1[sortProperty] - item2[sortProperty]);
+
+            $('.Total, .New').removeClass("selected");
+            $target.addClass("selected");
+        },
+    },
 
     beforeCreate: async function() {
         let result = await functions.GetSummary();
