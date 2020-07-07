@@ -4,18 +4,12 @@ body {
     font-size: $Default_Font-size;
 
     .page-container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: auto;
 
         // WORLD
         #world_vue {
             margin: 50px 0px;
-
-            // words
-            .center {
-                display: block;
-                text-align: center;
-            }
 
             .container {
                 display: flex;
@@ -57,6 +51,52 @@ body {
             }
         }
 
+        // RATING
+        #rating_vue {
+            margin: 100px 0px;
+            
+            .conteiner {
+                max-height: 800px;
+                overflow: auto;
 
+                table {
+                    margin: auto;
+                    text-align: left;
+                    position: relative;
+                    border-collapse: collapse;
+
+                    th {
+                        background-color: white;
+                        top: 0;
+                        position: sticky;
+                    }
+
+                    td.with-image {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                // Scrollbar styling
+                &::-webkit-scrollbar {
+                    width: 1em;
+                }
+
+                &::-webkit-scrollbar-track {
+                    border-radius: 5px;
+                    background-color: #dadada;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    border-radius: 5px;
+                    background-color: darkgrey;
+                }
+
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #7c7c7c;
+                }
+            }
+        }
     }
 }

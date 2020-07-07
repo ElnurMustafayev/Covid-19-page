@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Covid-19</title>
 
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/Styles.css">
@@ -18,7 +18,7 @@
 
     <!-- P A G E -->
     <div class="page-container">
-      
+
       <!-- N A V I G A T I O N -->
       <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Covid-19</span>
@@ -61,26 +61,36 @@
       </div>
 
       <!-- R A T I N G -->
-      <div id="rating_vue" style="max-height: 300px; overflow: auto; margin: 50px; width: fit-content;">
-        <h2>Rating table:</h2>
-        <table>
-          <thead>
-            <tr>
-              <th rowspan="2">Country</th>
-              <th colspan="3" style="text-align: center;">Total</th>
-              <th colspan="3" style="text-align: center;">New</th>
-            </tr>
-            <tr>
-              <th v-for="word in headWords">{{word}}</th>
-              <th v-for="word in headWords">{{word}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="country in countriesInfo">
-              <td v-for="key of country">{{key}}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="rating_vue">
+
+        <h2 class="center">Rating table</h2>
+
+        <div class="conteiner">
+
+          <!-- table -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th colspan="2"></th>
+                <th colspan="3" style="text-align: center;">Total</th>
+                <th colspan="3" style="text-align: center;">New</th>
+              </tr>
+              <tr>
+                <th>Flag</th>
+                <th>Country</th>
+                <th v-for="word in headWords">{{word}}</th>
+                <th v-for="word in headWords">{{word}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(country, index) in countriesInfo">
+                <td class="with-image"><img v-bind:src="countriesFlags[index]"></td>
+                <td v-for="key of country">{{key}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
 
       <!-- I N P U T -->

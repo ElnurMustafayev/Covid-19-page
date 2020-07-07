@@ -1,19 +1,19 @@
+html body .center {
+  display: block;
+  text-align: center;
+}
+
 body {
   font-size: 20px;
 }
 
 body .page-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
 }
 
 body .page-container #world_vue {
   margin: 50px 0px;
-}
-
-body .page-container #world_vue .center {
-  display: block;
-  text-align: center;
 }
 
 body .page-container #world_vue .container {
@@ -63,5 +63,58 @@ body .page-container #world_vue .canvases canvas {
   margin-top: 50px;
   max-height: 500px;
   max-width: 500px;
+}
+
+body .page-container #rating_vue {
+  margin: 100px 0px;
+}
+
+body .page-container #rating_vue .conteiner {
+  max-height: 800px;
+  overflow: auto;
+}
+
+body .page-container #rating_vue .conteiner table {
+  margin: auto;
+  text-align: left;
+  position: relative;
+  border-collapse: collapse;
+}
+
+body .page-container #rating_vue .conteiner table th {
+  background-color: white;
+  top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+body .page-container #rating_vue .conteiner table td.with-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .page-container #rating_vue .conteiner::-webkit-scrollbar {
+  width: 1em;
+}
+
+body .page-container #rating_vue .conteiner::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #dadada;
+}
+
+body .page-container #rating_vue .conteiner::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: darkgrey;
+}
+
+body .page-container #rating_vue .conteiner::-webkit-scrollbar-thumb:hover {
+  background-color: #7c7c7c;
 }
 /*# sourceMappingURL=Styles.css.map */
