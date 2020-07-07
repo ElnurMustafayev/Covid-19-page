@@ -1,5 +1,6 @@
 import * as country_m from "./country.js";
 import * as world_m from './world.js'
+import * as rating_m from './rating.js'
 import * as functions from './functions.js'
 
 let input_vue = new Vue({

@@ -1,6 +1,7 @@
 const api_countries = "https://api.covid19api.com/countries";
 const api_country_total = "https://api.covid19api.com/total/country/";
 const api_total = "https://api.covid19api.com/world/total";
+const api_summary = "https://api.covid19api.com/summary";
 
 export function GetParamsFromClassArray(array, ...arrayParams) {
   let newObj = [];
@@ -49,5 +50,16 @@ export async function GetCountryTotal(countryName) {
   }
   catch(error) {
     console.error("Country's total info not found!");
+  }
+}
+
+export async function GetSummary() {
+  try {
+    let request = await fetch(api_summary);
+    let data = await request.json();
+    return data;
+  }
+  catch(error) {
+    console.error("Summary info not found!");
   }
 }

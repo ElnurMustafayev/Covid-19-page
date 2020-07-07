@@ -16,12 +16,41 @@
 
     <div id="world_vue">
       <h2>World statistics</h2>
+      <p>Last updated: {{time}}</p>
       <ul>
-        <li>TotalConfirmed: {{Total.Confirmed}}</li>
-        <li>TotalRecovered: {{Total.Recovered}}</li>
-        <li>TotalActive: {{Total.Active}}</li>
-        <li>TotalDeaths: {{Total.Deaths}}</li>
+        <li>TotalConfirmed: {{total.TotalConfirmed}}</li>
+        <li>TotalRecovered: {{total.TotalRecovered}}</li>
+        <li>TotalDeaths: {{total.TotalDeaths}}</li>
+        <li>TotalActive: {{GetActive(true)}}</li>
       </ul>
+      <ul>
+        <li>NewConfirmed: {{total.NewConfirmed}}</li>
+        <li>NewRecovered: {{total.NewRecovered}}</li>
+        <li>NewDeaths: {{total.NewDeaths}}</li>
+        <li>NewActive: {{GetActive(false)}}</li>
+      </ul>
+    </div>
+
+    <div id="rating_vue" style="max-height: 300px; overflow: auto; margin: 50px; width: fit-content;">
+      <h2>Rating table:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2">Country</th>
+            <th colspan="3" style="text-align: center;">Total</th>
+            <th colspan="3" style="text-align: center;">New</th>
+          </tr>
+          <tr>
+            <th v-for="word in headWords">{{word}}</th>
+            <th v-for="word in headWords">{{word}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="country in countriesInfo">
+            <td v-for="key of country">{{key}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div id="input_vue">

@@ -33,7 +33,7 @@ export let country_vue = new Vue({
         "Recovered",
         "Active"
       );
-      this.cases.map(item => item.Date = new Date(item.Date.substr(0, 10)));
+      this.cases.map(item => item.Date = new Date(item.Date));
     },
   },
 });
