@@ -10,6 +10,7 @@
 
     <script defer src="../node_modules/jquery/dist/jquery.js" type="module"></script>
     <script defer src="../node_modules/vue/dist/vue.js"></script>
+    <script defer src="../node_modules/chart.js/dist/Chart.js"></script>
     <script defer src="./Js/relation.js" type="module"></script>
 
   </head>
@@ -17,6 +18,7 @@
 
     <!-- P A G E -->
     <div class="page-container">
+      
       <!-- N A V I G A T I O N -->
       <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Covid-19</span>
@@ -24,9 +26,14 @@
 
       <!-- W O R L D -->
       <div id="world_vue">
+
+        <!-- header -->
         <h2 class="center">World statistics</h2>
-        <i class="center text-muted">Last updated: {{time.toUTCString()}}</i>
+        <i class="center text-muted">Last updated: {{time}}</i>
+
         <div class="container">
+
+          <!-- total -->
           <ul class="list-group list-group-flush">
             <li class="list-group-item header">Total</li>
             <li class="list-group-item">Confirmed: <span class="text-warning">{{total.TotalConfirmed}}</span></li>
@@ -34,6 +41,8 @@
             <li class="list-group-item">Deaths: <span class="text-danger">{{total.TotalDeaths}}</span></li>
             <li class="list-group-item">Active: <span class="text-primary">{{GetActive(true)}}</span></li>
           </ul>
+          
+          <!-- today -->
           <ul class="list-group list-group-flush">
             <li class="list-group-item header">Today</li>
             <li class="list-group-item">Confirmed: <span class="text-warning">{{total.NewConfirmed}}</span></li>
@@ -41,7 +50,14 @@
             <li class="list-group-item">Deaths: <span class="text-danger">{{total.NewDeaths}}</span></li>
             <li class="list-group-item">Active: <span class="text-primary">{{GetActive(false)}}</span></li>
           </ul>
+          
         </div>
+
+        <div class="canvases">
+          <canvas id="totalChart"></canvas>
+          <canvas id="todayChart"></canvas>
+        </div>
+
       </div>
 
       <!-- R A T I N G -->

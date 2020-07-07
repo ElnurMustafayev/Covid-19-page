@@ -2,12 +2,21 @@ body {
   font-size: 20px;
 }
 
-body #world_vue .center {
+body .page-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+body .page-container #world_vue {
+  margin: 50px 0px;
+}
+
+body .page-container #world_vue .center {
   display: block;
   text-align: center;
 }
 
-body #world_vue .container {
+body .page-container #world_vue .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +27,11 @@ body #world_vue .container {
       justify-content: space-around;
 }
 
-body #world_vue .container ul li {
+body .page-container #world_vue .container ul {
+  width: 500px;
+}
+
+body .page-container #world_vue .container ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,12 +42,26 @@ body #world_vue .container ul li {
   padding: 10px 50px;
 }
 
-body #world_vue .container ul li * {
+body .page-container #world_vue .container ul li * {
   margin-left: 10px;
 }
 
-body #world_vue .container ul li.header {
+body .page-container #world_vue .container ul li.header {
   font-size: 24px;
   margin: auto;
+}
+
+body .page-container #world_vue .canvases {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .page-container #world_vue .canvases canvas {
+  margin-top: 50px;
+  max-height: 500px;
+  max-width: 500px;
 }
 /*# sourceMappingURL=Styles.css.map */
