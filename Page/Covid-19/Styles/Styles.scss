@@ -53,8 +53,8 @@ body {
 
         // RATING
         #rating_vue {
-            margin: 100px 100px;
-            
+            margin: 100px 100px 100px 50px;
+
             .conteiner {
                 max-height: 800px;
                 overflow: auto;
@@ -77,14 +77,15 @@ body {
                             transition: 0.3s;
                         }
 
-                        th.Total, th.New {
+                        th.Total,
+                        th.New {
 
                             &:hover {
                                 cursor: pointer;
                                 background-color: #f3f3f3;
                             }
                         }
-                        
+
                         th.selected {
                             background-color: #f3f3f3;
                         }
@@ -118,6 +119,48 @@ body {
 
                 &::-webkit-scrollbar-thumb:hover {
                     background-color: #7c7c7c;
+                }
+            }
+        }
+
+        #input_vue {
+
+            // alert
+            .alert-container {
+                height: 56px;
+                margin-bottom: 10;
+
+                .alert {
+                    width: 80%;
+                    //padding: unset 50px;
+                    margin: auto;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            // form
+            .navbar {
+
+                form {
+                    margin: auto;
+
+                    >* {
+                        margin: 0px 20px;
+                    }
+
+                    .input {
+
+                        span {
+                            margin-right: 10px;
+                        }
+                    }
+
+                    .range {
+                        width: 250px;
+                    }
                 }
             }
         }

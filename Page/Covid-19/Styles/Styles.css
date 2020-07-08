@@ -66,7 +66,7 @@ body .page-container #world_vue .canvases canvas {
 }
 
 body .page-container #rating_vue {
-  margin: 100px 100px;
+  margin: 100px 100px 100px 50px;
 }
 
 body .page-container #rating_vue .conteiner {
@@ -91,7 +91,8 @@ body .page-container #rating_vue .conteiner table thead th {
   transition: 0.3s;
 }
 
-body .page-container #rating_vue .conteiner table thead th.Total:hover, body .page-container #rating_vue .conteiner table thead th.New:hover {
+body .page-container #rating_vue .conteiner table thead th.Total:hover,
+body .page-container #rating_vue .conteiner table thead th.New:hover {
   cursor: pointer;
   background-color: #f3f3f3;
 }
@@ -128,5 +129,35 @@ body .page-container #rating_vue .conteiner::-webkit-scrollbar-thumb {
 
 body .page-container #rating_vue .conteiner::-webkit-scrollbar-thumb:hover {
   background-color: #7c7c7c;
+}
+
+body .page-container #input_vue .alert-container {
+  height: 56px;
+  margin-bottom: 10;
+}
+
+body .page-container #input_vue .alert-container .alert {
+  width: 80%;
+  margin: auto;
+}
+
+body .page-container #input_vue .alert-container .alert:hover {
+  cursor: pointer;
+}
+
+body .page-container #input_vue .navbar form {
+  margin: auto;
+}
+
+body .page-container #input_vue .navbar form > * {
+  margin: 0px 20px;
+}
+
+body .page-container #input_vue .navbar form .input span {
+  margin-right: 10px;
+}
+
+body .page-container #input_vue .navbar form .range {
+  width: 250px;
 }
 /*# sourceMappingURL=Styles.css.map */

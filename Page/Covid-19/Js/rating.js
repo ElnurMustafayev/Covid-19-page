@@ -5,7 +5,7 @@ export let rating_vue = new Vue({
 
     data: {
         countriesInfo: [],
-        countriesFlags: [],
+        //countriesFlags: [],
         bydescending: true,
         headWords: ["Confirmed", "Deaths", "Recovered"],
     },
@@ -28,12 +28,11 @@ export let rating_vue = new Vue({
     beforeCreate: async function() {
         let result = await functions.GetSummary();
 
-        let countryCodes = functions.GetOneParamFromArray(result.Countries, "CountryCode");
-        countryCodes.map(code => this.countriesFlags.push(`https://www.countryflags.io/${code}/flat/32.png`))
-
         this.countriesInfo = functions.GetParamsFromClassArray(result.Countries,
-        "Country", "TotalConfirmed", "TotalDeaths", 
+        "CountryCode", "Country", "TotalConfirmed", "TotalDeaths", 
         "TotalRecovered", "NewConfirmed", "NewDeaths", 
         "NewRecovered");
+
+        this.countriesInfo.map(item => item.CountryCode = `https://www.countryflags.io/${item.CountryCode}/flat/32.png`);
     }
 })

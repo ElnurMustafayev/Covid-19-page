@@ -16,13 +16,13 @@
   </head>
   <body>
 
+    <!-- N A V I G A T I O N -->
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1">Covid-19</span>
+    </nav>
+    
     <!-- P A G E -->
     <div class="page-container">
-
-      <!-- N A V I G A T I O N -->
-      <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Covid-19</span>
-      </nav>
 
       <!-- W O R L D -->
       <div id="world_vue">
@@ -88,8 +88,8 @@
             </thead>
             <tbody>
               <tr v-for="(country, index) in countriesInfo">
-                <td class="with-image"><img v-bind:src="countriesFlags[index]"></td>
-                <td v-for="key of country">{{key}}</td>
+                <td class="with-image"><img v-bind:src="country.CountryCode" alt="pic"></td>
+                <td v-for="key of country" v-if="key !== country.CountryCode">{{key}}</td>
               </tr>
             </tbody>
           </table>
@@ -100,17 +100,28 @@
 
       <!-- I N P U T -->
       <div id="input_vue">
-        <form v-on:submit.prevent="Search">
-          <p id="error_alert" @click="CloseAlert" style="display: none;"></p>
-          <span>Enter your country: </span>
-          <input list="countries_list" type="text" type="search" v-model="country" />
-          <button>Search</button>
-          <input type="range" min="1" v-bind:max="maxDaysCount" v-model="daysCount" />
-          <span>{{daysCount == maxDaysCount ? "All" : daysCount}} Days</span>
-          <datalist id="countries_list">
-            <option v-for="item in countries">{{item}}</option>
-          </datalist>
-        </form>
+        <div class="alert-container">
+          <p id="error_alert" class="alert alert-danger" @click="CloseAlert">warning!</p>
+        </div>
+        <div class="navbar navbar-light bg-light">
+          <form class="form-inline" v-on:submit.prevent="Search">
+
+            <div class="input">
+              <span>Enter your country: </span>
+              <input class="form-control mr-sm-2" list="countries_list" type="text" type="search" v-model="country" />
+              <button id="search" class="btn btn-info" disabled>Search</button>
+            </div>
+
+            <div class="range">
+              <label for="range">{{daysCount == maxDaysCount ? "All" : daysCount}} Days</label>
+              <input id="range" class="custom-range" type="range" min="1" v-bind:max="maxDaysCount" v-model="daysCount"/>
+            </div>
+
+            <datalist id="countries_list">
+              <option v-for="item in countries">{{item}}</option>
+            </datalist>
+          </form>
+       </div>
       </div>
 
       <!-- C O U N T R Y -->

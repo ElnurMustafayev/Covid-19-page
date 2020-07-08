@@ -23,7 +23,7 @@ export let country_vue = new Vue({
   watch: {
     name: async function name(newname, oldname) {
       let result = await functions.GetCountryTotal(newname);
-
+      
       let filteredResult = result.splice(result.length - this.daysCount);
       this.cases = functions.GetParamsFromClassArray(
         filteredResult,
