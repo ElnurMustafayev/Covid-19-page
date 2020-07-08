@@ -3,6 +3,7 @@
 body {
     font-size: $Default_Font-size;
 
+    // PAGE
     .page-container {
         max-width: 1400px;
         margin: auto;
@@ -123,6 +124,7 @@ body {
             }
         }
 
+        // INPUT
         #input_vue {
 
             // alert
@@ -162,6 +164,17 @@ body {
                         width: 250px;
                     }
                 }
+            }
+        }
+
+        // COUNTRY
+        #country_vue {
+            height: 800px;
+            overflow: auto;
+
+            .container {
+                margin-top: 50px;
+                text-align: center;
             }
         }
     }

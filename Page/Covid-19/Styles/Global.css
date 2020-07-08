@@ -1,3 +1,7 @@
+html body ul, html body ol {
+  list-style: none;
+}
+
 html body .center {
   display: block;
   text-align: center;

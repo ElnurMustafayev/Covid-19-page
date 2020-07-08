@@ -4,6 +4,10 @@ html {
     
     body {
         
+        ul, ol {
+            list-style: none;
+        }
+        
         .center {
             display: block;
             text-align: center;

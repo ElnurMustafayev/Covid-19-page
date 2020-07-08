@@ -100,9 +100,13 @@
 
       <!-- I N P U T -->
       <div id="input_vue">
+
+        <!-- alert -->
         <div class="alert-container">
           <p id="error_alert" class="alert alert-danger" @click="CloseAlert">warning!</p>
         </div>
+
+        <!-- form -->
         <div class="navbar navbar-light bg-light">
           <form class="form-inline" v-on:submit.prevent="Search">
 
@@ -120,17 +124,17 @@
             <datalist id="countries_list">
               <option v-for="item in countries">{{item}}</option>
             </datalist>
+
           </form>
        </div>
       </div>
 
       <!-- C O U N T R Y -->
-      <div id="country_vue" v-show="name">
-        <h2>Country name: {{name}}</h2>
-        <h3>Info:</h3>
-        <ul style="list-style: none;">
-          <li v-for="item in cases">{{GetCaseFullInfo(item)}}</li>
-        </ul>
+      <div id="country_vue">
+        <div class="container">
+          <h2>{{name}}</h2>
+          <canvas id="countryChart"></canvas>
+        </div>
       </div>
 
     </div>

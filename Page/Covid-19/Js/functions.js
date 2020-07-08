@@ -7,9 +7,8 @@ export function GetParamsFromClassArray(array, ...arrayParams) {
   let newObj = [];
   array.map((item) => {
     let newItem = {};
-    for (let key of arrayParams)
-      newItem[key] = item[key];
-      newObj.push(newItem);
+    for (let key of arrayParams) newItem[key] = item[key];
+    newObj.push(newItem);
   });
   return newObj;
 }
@@ -25,8 +24,7 @@ export async function GetAllCountries() {
     let request = await fetch(api_countries);
     let data = await request.json();
     return data;
-  }
-  catch(error) {
+  } catch (error) {
     console.error("All countries' info not found!");
   }
 }
@@ -36,8 +34,7 @@ export async function GetTotal() {
     let request = await fetch(api_total);
     let data = await request.json();
     return data;
-  }
-  catch(error) {
+  } catch (error) {
     console.error("Total info not found!");
   }
 }
@@ -47,8 +44,7 @@ export async function GetCountryTotal(countryName) {
     let request = await fetch(`${api_country_total}${countryName}`);
     let data = await request.json();
     return data;
-  }
-  catch(error) {
+  } catch (error) {
     console.error("Country's total info not found!");
   }
 }
@@ -58,8 +54,30 @@ export async function GetSummary() {
     let request = await fetch(api_summary);
     let data = await request.json();
     return data;
-  }
-  catch(error) {
+  } catch (error) {
     console.error("Summary info not found!");
   }
+}
+
+export function GetChartParams(cases, prefix = "") {
+  let datasets = [];
+  let labels = GetOneParamFromArray(cases, `${prefix}Date`);
+
+  datasets.push({
+    label: "Deaths",
+    data: GetOneParamFromArray(cases, `${prefix}Deaths`),
+    backgroundColor: "#dc3545",
+  });
+  datasets.push({
+    label: "Recovered",
+    data: GetOneParamFromArray(cases, `${prefix}Recovered`),
+    backgroundColor: "#28a745",
+  });
+  datasets.push({
+    label: "Active",
+    data: GetOneParamFromArray(cases, `${prefix}Active`),
+    backgroundColor: "#ffc107",
+  });
+
+  return { datasets, labels };
 }

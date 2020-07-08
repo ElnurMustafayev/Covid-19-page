@@ -5,7 +5,7 @@ let input_vue = new Vue({
   el: "#input_vue",
 
   data: {
-    country: "",
+    country: "Azerbaijan",
     countries: null,
     daysCount: 10,
     maxDaysCount: 167,
@@ -41,6 +41,7 @@ let input_vue = new Vue({
   beforeCreate: async function () {
     let allCountries = await functions.GetAllCountries();
     this.countries = functions.GetOneParamFromArray(allCountries, "Country");
+    this.maxDaysCount = (await functions.GetCountryTotal(this.country)).length;
 
     $(`#error_alert`).hide();
   },
