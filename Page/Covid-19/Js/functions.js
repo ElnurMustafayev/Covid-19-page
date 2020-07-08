@@ -2,6 +2,7 @@ const api_countries = "https://api.covid19api.com/countries";
 const api_country_total = "https://api.covid19api.com/total/country/";
 const api_total = "https://api.covid19api.com/world/total";
 const api_summary = "https://api.covid19api.com/summary";
+let countryChart = null;
 
 export function GetParamsFromClassArray(array, ...arrayParams) {
   let newObj = [];
@@ -80,4 +81,19 @@ export function GetChartParams(cases, prefix = "") {
   });
 
   return { datasets, labels };
+}
+
+export function CreateChart(cases, chartType = "line") {
+  let chartparams = GetChartParams(cases);
+
+  if (countryChart !== null) countryChart.destroy();
+
+  countryChart = new Chart($("#countryChart"), {
+    type: chartType,
+    data: {
+      labels: chartparams.labels,
+      datasets: chartparams.datasets,
+    },
+    options: {},
+  });
 }

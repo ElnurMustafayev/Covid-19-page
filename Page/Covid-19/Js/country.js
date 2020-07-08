@@ -1,21 +1,5 @@
 import * as functions from "./functions.js";
-let chart = null;
-
-function CreateChart(cases, chartType = "line") {
-  let chartparams = functions.GetChartParams(cases);
-      
-  if(chart !== null)
-    chart.destroy();
-
-  chart = new Chart($("#countryChart"), {
-    type: chartType, 
-    data: {
-      labels: chartparams.labels,
-      datasets: chartparams.datasets,
-    },
-    options: {},
-  });
-}
+import * as classes from "./classes.js";
 
 export let country_vue = new Vue({
   el: "#country_vue",
@@ -25,10 +9,17 @@ export let country_vue = new Vue({
     name: "",
     cases: [],
     daysCount: 10,
+    buttons: [],
   },
 
   // commands
-  methods: {},
+  methods: {
+    ChangeDiagram: function() {
+      let $target = $(event.target);
+      classes.NavigationButton.SetOneActive(this.buttons, $target.text());
+      functions.CreateChart(this.cases, classes.NavigationButton.GetActiveButtonName(this.buttons));
+    }
+  },
 
   // when prop is changed (like setter)
   watch: {
@@ -48,12 +39,16 @@ export let country_vue = new Vue({
       this.cases.map(item => item.Date = new Date(item.Date).toDateString());
 
       // Create Chart
-      CreateChart(this.cases, "radar");
+      functions.CreateChart(this.cases, classes.NavigationButton.GetActiveButtonName(this.buttons));
     },
   },
 
   created: function() {
+    let DiagramTypes = ["line", "bar", "radar"];
+    DiagramTypes.map(name => this.buttons.push(new classes.NavigationButton(name)));
+    this.buttons.find(but => but.name === "line").isActive = true;
+    
     this.name = "Azerbaijan";
-  }
+  },
 
 });

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid-19</title>
@@ -131,10 +132,17 @@
 
       <!-- C O U N T R Y -->
       <div id="country_vue">
+
+        <div class="nav">
+          <a @click="ChangeDiagram" class="btn btn-light" v-for="button in buttons" 
+          v-bind:class="[button.isActive ? 'active': '']">{{button.name}}</a>
+        </div>
+
         <div class="container">
           <h2>{{name}}</h2>
           <canvas id="countryChart"></canvas>
         </div>
+
       </div>
 
     </div>

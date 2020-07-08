@@ -170,6 +170,24 @@ body .page-container #country_vue {
   overflow: auto;
 }
 
+body .page-container #country_vue .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .page-container #country_vue .nav * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-radius: 0px !important;
+}
+
+body .page-container #country_vue .nav *.active {
+  background-color: white;
+  border-width: 0;
+}
+
 body .page-container #country_vue .container {
   margin-top: 50px;
   text-align: center;
